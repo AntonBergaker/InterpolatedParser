@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# NUnit2007: The actual value should not be a constant
+dotnet_diagnostic.NUnit2007.severity = none
