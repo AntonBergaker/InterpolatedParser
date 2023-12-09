@@ -7,5 +7,19 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
+<PropertyGroup>
+	<PackageId>InterpolatedParser</PackageId>
+	<Version>1.0.0</Version>
+	<Authors>Anton Bergåker</Authors>
+	<Title>InterpolatedParser</Title>
+	<Description>
+		Interpolated Strings but in reverse! A very cursed C# parser library.
+	</Description>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<PackageProjectUrl>https://github.com/AntonBergaker/InterpolatedParser</PackageProjectUrl>
+	<RepositoryUrl>https://github.com/AntonBergaker/InterpolatedParser</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+</PropertyGroup>
 
 </Project>
