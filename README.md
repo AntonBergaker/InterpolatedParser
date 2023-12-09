@@ -4,7 +4,7 @@
 **DO NOT USE THIS LIBRARY IN PRODUCTION**  
 The way InterpolatedParser works is by using unsafe code that is very volatile. Do not use this outside small short lived executions to test things or parse simple strings. It's meant more of a weird language showcase than an actual product.
 
-InterpolatedParser is a nuget library enabling string interpolation, but in reverse.
+InterpolatedParser is a [nuget](https://github.com/AntonBergaker/InterpolatedParser) library enabling string interpolation, but in reverse.
 
 Example code:
 ```csharp
