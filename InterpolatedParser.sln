@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterpolatedParser", "InterpolatedParser\InterpolatedParser.csproj", "{0EAB6F6F-B884-4392-B102-389F550BAB4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterpolatedParser", "InterpolatedParser\InterpolatedParser.csproj", "{0EAB6F6F-B884-4392-B102-389F550BAB4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{81FBF656-C4C1-4DE2-A9FE-92B72B2AB374}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{81FBF656-C4C1-4DE2-A9FE-92B72B2AB374}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterpolatedParser.Sources", "InterpolatedParser.Sources\InterpolatedParser.Sources.csproj", "{7E7413B8-CFF5-45B3-A982-2D7BE6705F59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{81FBF656-C4C1-4DE2-A9FE-92B72B2AB374}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81FBF656-C4C1-4DE2-A9FE-92B72B2AB374}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81FBF656-C4C1-4DE2-A9FE-92B72B2AB374}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E7413B8-CFF5-45B3-A982-2D7BE6705F59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E7413B8-CFF5-45B3-A982-2D7BE6705F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E7413B8-CFF5-45B3-A982-2D7BE6705F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E7413B8-CFF5-45B3-A982-2D7BE6705F59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

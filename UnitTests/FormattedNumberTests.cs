@@ -7,9 +7,10 @@ public class FormattedNumberTests {
         {
             int x = 0x123;
 
-            InterpolatedParser.Parse(
-                $"{x:X}",
-                 "123");
+            InterpolatedParser.Parser.Parse(
+                 "123",
+                $"{x:X}"
+            );
 
             Assert.AreEqual(0x123, x);
         }
@@ -17,26 +18,24 @@ public class FormattedNumberTests {
         {
             int x = 0xABC;
 
-            InterpolatedParser.Parse(
-                $"{x:X}",
-                 "ABC");
+            InterpolatedParser.Parser.Parse(
+                 "ABC",
+                $"{x:X}"
+                );
 
             Assert.AreEqual(0xABC, x);
         }
     }
 
     public void FormattedOtherTypes() {
-        
         byte x = 0xCC;
 
-        InterpolatedParser.Parse(
-            $"{x:X}",
-                "CC");
+        InterpolatedParser.Parser.Parse(
+             "CC",
+            $"{x:X}"
+        );
 
         Assert.AreEqual(0xCC, x);
-        
-
-
     }
 
 }

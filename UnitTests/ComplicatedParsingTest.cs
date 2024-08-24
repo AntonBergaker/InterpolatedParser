@@ -1,24 +1,18 @@
 ﻿using InterpolatedParsing;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UnitTests;
 internal class ComplicatedParsingTest {
 
-    private record Dice(int Count, string Color) : IParsable<Dice> {
+    public record Dice(int Count, string Color) : IParsable<Dice> {
         public static Dice Parse(string input, IFormatProvider? provider) {
             int count = 0;
             string color = null!;
 
-            InterpolatedParser.Parse(
-                $"{count} {color}",
-                input);
+            InterpolatedParser.Parser.Parse(
+                input,
+                $"{count} {color}"
+            );
 
             return new(count, color);
         }
@@ -28,13 +22,14 @@ internal class ComplicatedParsingTest {
         }
     }
 
-    private record Round(Dice[] Dice) : IParsable<Round> {
+    public record Round(Dice[] Dice) : IParsable<Round> {
         public static Round Parse(string input, IFormatProvider? provider) {
             Dice[] dice = null!;
 
-            InterpolatedParser.Parse(
-                $"{dice:', '}",
-                input);
+            InterpolatedParser.Parser.Parse(
+                input,
+                $"{dice:', '}"
+            );
 
             return new(dice);
         }
@@ -44,14 +39,15 @@ internal class ComplicatedParsingTest {
         }
     }
 
-    private record Game(int index, Round[] Rounds) : IParsable<Game> {
+    public record Game(int index, Round[] Rounds) : IParsable<Game> {
         public static Game Parse(string input, IFormatProvider? provider) {
             int index = 0;
             Round[] rounds = null!;
 
-            InterpolatedParser.Parse(
-                $"Game {index}: {rounds:'; '}",
-                input);
+            InterpolatedParser.Parser.Parse(
+                input,
+                $"Game {index}: {rounds:'; '}"
+            );
 
             return new Game(index, rounds);
         }
@@ -75,9 +71,10 @@ internal class ComplicatedParsingTest {
 
         List<Game> games = default!;
 
-        InterpolatedParser.Parse(
-            $"{games:\"\n\"}",
-            input);
+        InterpolatedParser.Parser.Parse(
+            input,
+            $"{games:\'\r\n\'}"
+        );
 
         Assert.AreEqual(5, games.Count);
         Assert.AreEqual(3, games[0].Rounds.Length);

@@ -1,15 +1,12 @@
-﻿
-
-using InterpolatedParsing;
+﻿using InterpolatedParsing;
 
 namespace UnitTests;
-
 
 public class NumberStyleConversionTests {
 
     private void AssertParsedNumberAreEqual(int number, string style) {
         string str = number.ToString(style);
-        var numberStyles = Utils.GetNumberStylesFromString(style);
+        var numberStyles = InterpolatedParser.InterpolatedParseStringHandler.GetNumberStylesFromString(style);
         int parsedNumber = int.Parse(str, numberStyles);
         Assert.AreEqual(number, parsedNumber);
     }

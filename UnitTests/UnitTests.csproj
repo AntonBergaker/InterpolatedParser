@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\InterpolatedParser\InterpolatedParser.csproj" />
+    <ProjectReference Include="..\InterpolatedParser\InterpolatedParser.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
   </ItemGroup>
 
 
