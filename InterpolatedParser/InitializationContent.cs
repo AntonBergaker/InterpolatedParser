@@ -90,10 +90,6 @@ namespace InterpolatedParsing {
                     separator = separator[1..^1];
                 }
 
-				foreach (var c in separator) {
-					System.Console.WriteLine((int)c);
-				}
-
                 var list = new System.Collections.Generic.List<T>();
 
                 while (true) {

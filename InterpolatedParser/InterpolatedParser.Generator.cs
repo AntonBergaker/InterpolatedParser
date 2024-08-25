@@ -217,8 +217,6 @@ public class InterpolatedParser : IIncrementalGenerator {
                     }
 
                     var nextPart = GetNextPart();
-                    System.Console.WriteLine("NEWPART");
-                    System.Console.WriteLine(new string(nextPart));
 
                     var list = {{function}}<{{type.InnerType.FullName}}>(nextPart, format);
                     System.Runtime.CompilerServices.Unsafe.AsRef(in value) = {{returnedValue}};
