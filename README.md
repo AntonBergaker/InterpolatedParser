@@ -29,12 +29,12 @@ using InterpolatedParsing;
 List<int> numbers = null!;
 
 InterpolatedParser.Parse(
-	$"Winning numbers are: {x:,}",
+	$"Winning numbers are: {numbers:,}",
 	"Winning numbers are: 5,10,15,25);
 
 List<string> beans = null!;
 InterpolatedParser.Parse(
-	$"Bean list: {x:', '}", // Add single quotes to support whitespace
+	$"Bean list: {beans:', '}", // Add single quotes to support whitespace
 	"Bean list: black, coffee, green");
 
 ```
