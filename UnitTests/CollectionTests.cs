@@ -6,7 +6,7 @@ internal class CollectionTests {
     public void IntArray() {
         int[] array = default!;
 
-        InterpolatedParser.Parser.Parse(
+        InterpolatedParser.Parse(
              "1,2,4,8,16",
             $"{array:,}"
         );
@@ -18,7 +18,7 @@ internal class CollectionTests {
     public void StringArray() {
         string[] array = default!;
 
-        InterpolatedParser.Parser.Parse(
+        InterpolatedParser.Parse(
              "i am cool",
             $"{array:' '}"
         );

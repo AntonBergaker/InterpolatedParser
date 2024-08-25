@@ -11,7 +11,7 @@ public class SimpleParsingTests {
     public void Single() {
         int x = 0;
 
-        InterpolatedParser.Parser.Parse(
+        InterpolatedParser.Parse(
              "69",
             $"{x}"
         );
@@ -24,7 +24,7 @@ public class SimpleParsingTests {
         int x = 0;
         int y = 0;
 
-        InterpolatedParser.Parser.Parse(
+        InterpolatedParser.Parse(
              "x=512, y=123",
             $"x={x}, y={y}"
         );
@@ -37,7 +37,7 @@ public class SimpleParsingTests {
     public void NoPrestring() {
         int x = 0;
 
-        InterpolatedParser.Parser.Parse(
+        InterpolatedParser.Parse(
              "1337 is the ticket!",
             $"{x } is the ticket!"
         );
@@ -49,9 +49,9 @@ public class SimpleParsingTests {
     public void Stacked() {
         int x = 0;
 
-        InterpolatedParser.Parser.Parse("123 woop", $"{x} woop");
-        InterpolatedParser.Parser.Parse("123 woop", $"{x} woop");
-        InterpolatedParser.Parser.Parse("123 woop", $"{x} woop");
+        InterpolatedParser.Parse("123 woop", $"{x} woop");
+        InterpolatedParser.Parse("123 woop", $"{x} woop");
+        InterpolatedParser.Parse("123 woop", $"{x} woop");
 
         Assert.AreEqual(123, x);
     }
@@ -61,7 +61,7 @@ public class SimpleParsingTests {
         {
             string flavor = "";
 
-            InterpolatedParser.Parser.Parse(
+            InterpolatedParser.Parse(
                  "Favorite ice cream: vanilla",
                 $"Favorite ice cream: {flavor}"
             );
@@ -73,7 +73,7 @@ public class SimpleParsingTests {
             string flavor0 = "";
             string flavor1 = "";
 
-            InterpolatedParser.Parser.Parse(
+            InterpolatedParser.Parse(
                  "One cone with vanilla and chocolate please",
                 $"One cone with {flavor0} and {flavor1} please"
             );

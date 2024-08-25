@@ -9,7 +9,7 @@ internal class ComplicatedParsingTest {
             int count = 0;
             string color = null!;
 
-            InterpolatedParser.Parser.Parse(
+            InterpolatedParser.Parse(
                 input,
                 $"{count} {color}"
             );
@@ -26,7 +26,7 @@ internal class ComplicatedParsingTest {
         public static Round Parse(string input, IFormatProvider? provider) {
             Dice[] dice = null!;
 
-            InterpolatedParser.Parser.Parse(
+            InterpolatedParser.Parse(
                 input,
                 $"{dice:', '}"
             );
@@ -44,7 +44,7 @@ internal class ComplicatedParsingTest {
             int index = 0;
             Round[] rounds = null!;
 
-            InterpolatedParser.Parser.Parse(
+            InterpolatedParser.Parse(
                 input,
                 $"Game {index}: {rounds:'; '}"
             );
@@ -71,9 +71,9 @@ internal class ComplicatedParsingTest {
 
         List<Game> games = default!;
 
-        InterpolatedParser.Parser.Parse(
+        InterpolatedParser.Parse(
             input,
-            $"{games:\'\r\n\'}"
+            $"{games:'\r\n'}"
         );
 
         Assert.AreEqual(5, games.Count);

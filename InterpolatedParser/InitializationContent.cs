@@ -10,13 +10,9 @@ public static class InitializationContent {
 
 namespace InterpolatedParsing {
     internal static partial class InterpolatedParser {
-        public static InterpolatedParserInstance Parser = new InterpolatedParserInstance();
-
-        public class InterpolatedParserInstance {
-            public void Parse(string input,
-                [System.Runtime.CompilerServices.InterpolatedStringHandlerArgument("", "input")] InterpolatedParseStringHandler stringHandler) {
-                // Do nothing. Building the string already did all the fun stuff.
-            }
+        public static void Parse(string input,
+            [System.Runtime.CompilerServices.InterpolatedStringHandlerArgument("input")] InterpolatedParseStringHandler stringHandler) {
+            // Do nothing. Building the string already did all the fun stuff.
         }
 
         [System.Runtime.CompilerServices.InterpolatedStringHandler]
@@ -53,7 +49,6 @@ namespace InterpolatedParsing {
                 // All these optional inputs are required so we don't accidentally fill the source file path and source line number.
                 int _literalLength,
                 int _formattedCount,
-                object _caller,
                 string input,
                 out bool shouldFormat,
                 [System.Runtime.CompilerServices.CallerFilePath] string sourceFilePath = "",

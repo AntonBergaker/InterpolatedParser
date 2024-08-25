@@ -12,7 +12,7 @@ namespace InterpolatedParser;
 
 [Generator]
 public class InterpolatedParser : IIncrementalGenerator {
-    private const string ParseMethodName = "InterpolatedParsing.InterpolatedParser.InterpolatedParserInstance.Parse(string, InterpolatedParsing.InterpolatedParser.InterpolatedParseStringHandler)";
+    private const string ParseMethodName = "InterpolatedParsing.InterpolatedParser.Parse(string, InterpolatedParsing.InterpolatedParser.InterpolatedParseStringHandler)";
 
     public void Initialize(IncrementalGeneratorInitializationContext context) {
         //Debugger.Launch();

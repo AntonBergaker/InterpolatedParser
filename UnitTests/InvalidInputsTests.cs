@@ -7,7 +7,7 @@ internal class InvalidInputsTests {
     public void InvalidStart() {
         Assert.Catch(() => {
             int x = 0;
-            InterpolatedParser.Parser.Parse(
+            InterpolatedParser.Parse(
                 "too different 12",
                 $"something {x}"
             );
@@ -15,7 +15,7 @@ internal class InvalidInputsTests {
 
         Assert.Catch(() => {
             int x = 0;
-            InterpolatedParser.Parser.Parse(
+            InterpolatedParser.Parse(
                 "12",
                 $"too much {x}"
                 );
@@ -23,7 +23,7 @@ internal class InvalidInputsTests {
 
         Assert.Catch(() => {
             int x = 0;
-            InterpolatedParser.Parser.Parse(
+            InterpolatedParser.Parse(
                 "missing 12",
                 $"{x}"
                 );

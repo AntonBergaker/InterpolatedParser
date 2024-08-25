@@ -7,7 +7,7 @@ public class FormattedNumberTests {
         {
             int x = 0x123;
 
-            InterpolatedParser.Parser.Parse(
+            InterpolatedParser.Parse(
                  "123",
                 $"{x:X}"
             );
@@ -18,7 +18,7 @@ public class FormattedNumberTests {
         {
             int x = 0xABC;
 
-            InterpolatedParser.Parser.Parse(
+            InterpolatedParser.Parse(
                  "ABC",
                 $"{x:X}"
                 );
@@ -30,7 +30,7 @@ public class FormattedNumberTests {
     public void FormattedOtherTypes() {
         byte x = 0xCC;
 
-        InterpolatedParser.Parser.Parse(
+        InterpolatedParser.Parse(
              "CC",
             $"{x:X}"
         );
