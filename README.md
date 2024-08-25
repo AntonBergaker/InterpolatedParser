@@ -1,8 +1,4 @@
-
 # InterpolatedParser
-
-**DO NOT USE THIS LIBRARY IN PRODUCTION**  
-The way InterpolatedParser works is by using unsafe code that is very volatile. Do not use this outside small short lived executions to test things or parse simple strings. It's meant more of a weird language showcase than an actual product.
 
 InterpolatedParser is a [nuget](https://www.nuget.org/packages/InterpolatedParser/1.0.0) library enabling string interpolation, but in reverse.
 
@@ -20,9 +16,6 @@ Console.WriteLine(x); // Prints 69.
 ```
 
 ## Usage
-
-### Limitations
-**Make sure any variable you parse into is a variable living on the stack. The reason why is explained below.** 
 
 ### Supported types
 InterpolatedParser supports anything that implements IParseable<T>, which includes many common types in .NET. This also means you can use your own types by having them implement IParseable<T>.
@@ -48,7 +41,7 @@ InterpolatedParser.Parse(
 
 
 ## This is cursed, how does it do that?
-C# 10 added support for writing [custom interpolated string handlers](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/interpolated-string-handler). At compile time they translate interpolated strings into a series of calls to magic methods: AppendLiteral for literal strings, and AppendFormatted to the parameters of the string.
+C# 10 added support for writing [custom interpolated string handlers](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/interpolated-string-handler). At compile time they translate interpolated strings into a series of calls to magic methods: `AppendLiteral` for literal strings, and `AppendFormatted` to the parameters of the string.
 
 ```csharp
 var str = $"Hello {123}!";
@@ -62,11 +55,16 @@ handler.AppendLiteral("!");
 var str = handler.ToStringAndClear();
 ```
 
-That's all good and normally doesn't enable the shenanigans we need. However we can abuse the [in](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/method-parameters#in-parameter-modifier) parameter modifier. The in parameter can be implicit, so the generated calls to AppendFormatted allow it. This means we're now passing down a read only reference to the value when we call AppendFormatted. This is where things become really cursed, using unsafe code it's casted down to a void\* so we can keep a reference to it.
+That's all good and normally doesn't enable the shenanigans we need. However we can abuse the [in](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/method-parameters#in-parameter-modifier) parameter modifier. The in parameter can be implicit, so the generated calls to AppendFormatted allow it. This means we're now passing down a read only reference to the value when we call AppendFormatted. This is where things become really cursed, using `Unsafe.AsRef` it's possible to cast it into a ref parameter, allowing the parser to change the parameters value.
 
 ```csharp
     public readonly void AppendFormatted(in int value) {
-        void* pointer = Unsafe.AsPointer(ref Unsafe.AsRef(in value));
+        Unsafe.AsRef(in value) = 123;
 ```
 
-As you might imagine this is very unsafe and volatile. Because the reference is needed between method calls, the pointer can also not be pinned so it can be moved around by garbage collection. That's why it's very important to only use this for stack variables. 
+This is the main hack that makes this work, but when `AppendFormatted` is called, we don't yet have the information to extract what part of the input string we should parse. (Previous versions of this parser stored the ref as a pointer which was giga unsafe as it could not be pinned.) The information we need for that is getting the next part of the string, which is added with an `AppendLiteral` after the `AppendFormatted`. To get the upcomming literal string this library uses a [C# Source Generator](https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview) to make a list of every single call to the `Parse` method and what string components each `Parse` call will have. Since generated code lives in the user project, to make it accessible to the Parser the entire Parser is also code generated. This has some other benefits, like allowing code generation to support both `ISpanParsable` and `IParsable` types.
+
+Of course even with a list of all calls we still need a way to pick the right call out of this list. Somewhat surprisngly there's a set of slightly obscure attributes that will inject the [file path](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.callerfilepathattribute) and the [line number](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.callerlinenumberattribute) of the calling method at compile time.
+Even more surprisingly these attributes still work on the auto generated constructor of the custom string interpolater. One side effect of this is that the accuracy is limited to line number, so placing two calls to `Parse` on the same line will break the parser.
+
+The input string also gets passed to the interpolater's constructor using another [attribute](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.interpolatedstringhandlerargumentattribute) and so we have all the information we need before any calls to `AppendFormatted`.
