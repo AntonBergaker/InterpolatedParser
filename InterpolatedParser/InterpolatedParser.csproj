@@ -13,20 +13,5 @@
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.4.0" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="all" />
 	</ItemGroup>
-	
-	<PropertyGroup>
-		<PackageId>InterpolatedParser</PackageId>
-		<Version>1.0.0</Version>
-		<Authors>Anton Bergåker</Authors>
-		<Title>InterpolatedParser</Title>
-		<Description>
-			Interpolated Strings but in reverse! A very cursed C# parser library.
-		</Description>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/AntonBergaker/InterpolatedParser</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/AntonBergaker/InterpolatedParser</RepositoryUrl>
-		<RepositoryType>git</RepositoryType>
-		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-	</PropertyGroup>
 
 </Project>

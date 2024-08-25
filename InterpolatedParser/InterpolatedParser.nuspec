@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+	<metadata>
+		<id>InterpolatedParser</id>
+		<version>1.1</version>
+		<title>InterpolatedParser</title>
+		<authors>AntonBergåker</authors>
+		<description>Interpolated Strings but in reverse! A very cursed C# parser library.</description>
+		<summary>Interpolated Strings but in reverse! A very cursed C# parser library.</summary>
+		<repository type="git" url="https://github.com/AntonBergaker/InterpolatedParser" />
+		<projectUrl>https://github.com/AntonBergaker/InterpolatedParser</projectUrl>
+		<license type="expression">MIT</license>
+		<readme>docs\README.md</readme>
+		<dependencies>
+			<group targetFramework=".NETStandard2.0" />
+		</dependencies>
+	</metadata>
+	<files>
+		<file src=".\bin\Release\netstandard2.0\InterpolatedParser.dll" target="analyzers\dotnet\cs" />
+		<file src="..\README.md" target="docs\" />
+	</files>
+</package>
