@@ -10,7 +10,7 @@ int x = 0;
 
 string input = "x is 69";
 
-InterpolatedParser.Parse($"x is {x}", input);
+InterpolatedParser.Parse(input, $"x is {x}");
 
 Console.WriteLine(x); // Prints 69.
 ```
@@ -29,14 +29,13 @@ using InterpolatedParsing;
 List<int> numbers = null!;
 
 InterpolatedParser.Parse(
-	$"Winning numbers are: {numbers:,}",
-	"Winning numbers are: 5,10,15,25);
+	"Winning numbers are: 5,10,15,25",
+	$"Winning numbers are: {numbers:,}");
 
 List<string> beans = null!;
 InterpolatedParser.Parse(
-	$"Bean list: {beans:', '}", // Add single quotes to support whitespace
 	"Bean list: black, coffee, green");
-
+	$"Bean list: {beans:', '}"); // Add single quotes to support whitespace
 ```
 
 

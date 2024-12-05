@@ -79,6 +79,7 @@ internal class ComplicatedParsingTest {
         Assert.AreEqual(5, games.Count);
         Assert.AreEqual(3, games[0].Rounds.Length);
         Assert.AreEqual("blue", games[0].Rounds[0].Dice[0].Color);
+        Assert.AreEqual("green", games[^1].Rounds[^1].Dice[^1].Color);
     }
 
 

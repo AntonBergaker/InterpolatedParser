@@ -8,7 +8,6 @@
 			// string
 			public void AppendFormatted(in string value) {
 				var nextPart = GetNextPart();
-				// Errors here, but is implemented everywhere interpolated string handling is.
 				System.Runtime.CompilerServices.Unsafe.AsRef(in value) = new string(nextPart);
 			}
 

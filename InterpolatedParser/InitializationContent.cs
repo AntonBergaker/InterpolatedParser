@@ -1,17 +1,15 @@
-﻿//* <- Add comment here to switch between string and readable
-namespace InterpolatedParser;
+﻿namespace InterpolatedParser;
 
 public static class InitializationContent {
     public static string GetContent() =>
 """
-/**/
 #nullable enable
 
 
 namespace InterpolatedParsing {
     internal static partial class InterpolatedParser {
         public static void Parse(string input,
-            [System.Runtime.CompilerServices.InterpolatedStringHandlerArgument("input")] InterpolatedParseStringHandler stringHandler) {
+            [System.Runtime.CompilerServices.InterpolatedStringHandlerArgument("input")] InterpolatedParseStringHandler template) {
             // Do nothing. Building the string already did all the fun stuff.
         }
 
@@ -279,7 +277,5 @@ namespace InterpolatedParsing {
 	}
 }
 
-//*
 """;
 }
-/**/
