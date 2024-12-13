@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
 	<metadata>
 		<id>InterpolatedParser</id>
-		<version>1.1.2</version>
+		<version>1.1.3</version>
 		<title>InterpolatedParser</title>
 		<authors>AntonBergåker</authors>
 		<description>Interpolated Strings but in reverse! A very cursed C# parser library.</description>

@@ -9,6 +9,9 @@
     <IsTestProject>true</IsTestProject>
 
 	<NoWarn>NUnit2005</NoWarn>
+
+	<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+	<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\Generated</CompilerGeneratedFilesOutputPath>
   </PropertyGroup>
 
   <ItemGroup>

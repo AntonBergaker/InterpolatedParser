@@ -80,7 +80,7 @@ public class InterpolatedParser : IIncrementalGenerator {
         foreach (var addOperations in stringOperation.ChildOperations) {
             if (addOperations.Syntax is InterpolatedStringTextSyntax interpolatedStringText) {
                 if (isFirst == false) {
-                    components.Add(interpolatedStringText.TextToken.Text);
+                    components.Add(interpolatedStringText.TextToken.ValueText);
                 }
                 continue;
             }
@@ -234,7 +234,11 @@ public class InterpolatedParser : IIncrementalGenerator {
     }
 
     private string EscapeString(string str) {
-        return $"\"{str.Replace("\\", "\\\\")}\"";
+        return $"\"{str
+            .Replace("\\", "\\\\")
+            .Replace("\n", "\\n")
+            .Replace("\r", "\\r")
+            }\"";
     }
 
 }

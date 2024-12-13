@@ -82,4 +82,26 @@ public class SimpleParsingTests {
             Assert.AreEqual("chocolate", flavor1);
         }
     }
+
+    [Test]
+    public void Multiline() {
+        int value0 = 0, value1 = 0, value2 = 0;
+
+        var input = """
+            Today: 1,
+            Tomorrow: 4,
+            Tuesday: 9
+            """;
+        InterpolatedParser.Parse(input,
+            $"""
+            Today: {value0},
+            Tomorrow: {value1},
+            Tuesday: {value2}
+            """
+        );
+
+        Assert.AreEqual(1, value0);
+        Assert.AreEqual(4, value1);
+        Assert.AreEqual(9, value2);
+    }
 }
