@@ -27,6 +27,7 @@ public class FormattedNumberTests {
         }
     }
 
+    [Test]
     public void FormattedOtherTypes() {
         byte x = 0xCC;
 

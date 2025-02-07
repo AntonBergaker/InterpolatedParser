@@ -45,7 +45,7 @@ namespace InterpolatedParsing {
                 out bool shouldFormat,
                 [System.Runtime.CompilerServices.CallerFilePath] string sourceFilePath = "",
                 [System.Runtime.CompilerServices.CallerLineNumber] int sourceLineNumber = 0
-                ) {
+            ) {
 
                 shouldFormat = true;
 
@@ -53,13 +53,20 @@ namespace InterpolatedParsing {
                 _currentStringPosition = 0;
                 _inputString = input;
                 if (_sources.TryGetValue((sourceFilePath, sourceLineNumber), out _source!) == false) {
-                    throw new System.Exception($"Unable to find source string for {sourceFilePath}:{sourceLineNumber}.");
+                    throw new System.Exception(
+                        $"Unable to find source string for {sourceFilePath}:{sourceLineNumber}. " +
+                        "This can occur if the source generator resolves the line that calls Parse incorrectly. " +
+                        "Make sure there's only one InterpolatedParser.Parse call on its line."
+                    );
                 }
             }
 
             private System.ReadOnlySpan<char> GetNextPart() {
                 // Final bit
                 if (_currentIndex >= _source.Components.Length) {
+                    if (_currentStringPosition > _inputString.Length) {
+                        throw new System.Exception("Tried to read beyond the size of the input string. This usually means the provided string is missing parts of the template.");
+                    }
                     return System.MemoryExtensions.AsSpan(_inputString, _currentStringPosition, _inputString.Length - _currentStringPosition);
                 }
 
@@ -67,7 +74,10 @@ namespace InterpolatedParsing {
                 int index = _inputString.IndexOf(nextPart, _currentStringPosition);
 
                 if (index <= -1) {
-                    throw new System.Exception("Failed to find the substring of the next part. This shouldn't be possible.");
+                    throw new System.Exception(
+                        $"Failed to find the next part of the template: \"{nextPart}\" in the remainder of the input string. " +
+                        $"Make sure the template matches the input string, and that any previous parsed part does not contain the substring: \"{nextPart}\""
+                    );
                 }
 
                 var startPos = _currentStringPosition;
