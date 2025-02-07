@@ -6,10 +6,9 @@ Example code:
 ```csharp
 using InterpolatedParsing;
 
-int x = 0;
-
 string input = "x is 69";
 
+int x = 0;
 InterpolatedParser.Parse(input, $"x is {x}");
 
 Console.WriteLine(x); // Prints 69.
