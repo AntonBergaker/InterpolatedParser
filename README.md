@@ -17,7 +17,7 @@ Console.WriteLine(x); // Prints 69.
 ## Usage
 
 ### Warning
-This library abuses [Unsafe.AsRef](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.unsafe.asref) in a way that violates the runtimes expectations. It is not recommended to use this in production code. This library is intended as a fun little example of how C# features and implementation details can be used to do something unexpected and interesting. I am currently working on a much less cursed libary with a much more sane API.
+This library abuses [Unsafe.AsRef](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.unsafe.asref) in a way that violates the runtimes expectations. It is not recommended to use this in production code. This library is intended as a fun little example of how C# features and implementation details can be used to do something unexpected and interesting. If you want to use a libary with a very similar but not cursed API, you can try my other library, [OutParser](https://github.com/AntonBergaker/OutParser).
 
 ### Supported types
 InterpolatedParser supports anything that implements `IParseable<T>` and `ISpanParseable<T>`, which includes many common types in .NET. This also means you can use your own types by having them implement either of the two interfaces.
