@@ -238,6 +238,8 @@ public class InterpolatedParser : IIncrementalGenerator {
             .Replace("\\", "\\\\")
             .Replace("\n", "\\n")
             .Replace("\r", "\\r")
+            .Replace("{{", "{")
+            .Replace("}}", "}")
             }\"";
     }
 

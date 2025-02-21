@@ -104,4 +104,16 @@ public class SimpleParsingTests {
         Assert.AreEqual(4, value1);
         Assert.AreEqual(9, value2);
     }
+
+    [Test]
+    public void EscapedBraces() {
+        int x = 0;
+
+        InterpolatedParser.Parse(
+             "My formatted string is like this {69}",
+            $"My formatted string is like this {{{x}}}"
+        );
+
+        Assert.AreEqual(69, x);
+    }
 }
