@@ -36,7 +36,7 @@ InterpolatedParser.Parse(
 
 List<string> beans = null!;
 InterpolatedParser.Parse(
-	"Bean list: black, coffee, green");
+	"Bean list: black, coffee, green",
 	$"Bean list: {beans:', '}"); // Add single quotes to support whitespace
 ```
 
