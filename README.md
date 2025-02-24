@@ -1,6 +1,6 @@
 # InterpolatedParser
 
-InterpolatedParser is a [nuget](https://www.nuget.org/packages/InterpolatedParser/) library enabling string interpolation, but in reverse.
+InterpolatedParser is a [nuget](https://www.nuget.org/packages/InterpolatedParser/) library enabling string interpolation, but in reverse — akin to `scanf` in C.
 
 Example code:
 ```csharp
